@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blush & Bloom ร้านเครื่องสำอางออนไลน์">
+  <title>Blush & Bloom | ร้านเครื่องสำอาง</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap");
+
+    :root {
+      --primary: #df7196;
+      --primary-dark: #bd5277;
+      --soft-pink: #fff0f5;
+      --light-pink: #fff8fa;
+      --peach: #ffe4dd;
+      --purple: #eee5ff;
+      --text: #4b3540;
+      --muted: #8f7883;
+      --white: #ffffff;
+      --border: #f0dfe6;
+      --success: #548f70;
+      --danger: #d55269;
+      --shadow: 0 12px 35px rgba(167, 98, 124, 0.12);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Prompt", sans-serif;
+      color: var(--text);
+      background: var(--light-pink);
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--peach), #ffc8d9);
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .cart-button {
+      border: 0;
+      color: var(--text);
+      background: var(--soft-pink);
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-count {
+      min-width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--primary);
+      border-radius: 50%;
+      font-size: 0.78rem;
+    }
+
+    .hero {
+      padding: 70px 0 45px;
+    }
+
+    .hero-box {
+      min-height: 390px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      background:
+        radial-gradient(circle at 90% 5%, #ffffff 0, transparent 25%),
+        linear-gradient(135deg, #ffe9f0, #f4eaff);
+      border-radius: 36px;
+      padding: 50px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.72);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.13;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--muted);
+      margin-bottom: 27px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 20px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .primary-button {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 8px 18px rgba(223, 113, 150, 0.25);
+    }
+
+    .primary-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      color: var(--primary-dark);
+      background: var(--soft-pink);
+    }
+
+    .hero-art {
+      position: relative;
+      height: 300px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-circle {
+      width: 260px;
+      height: 260px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: 0 25px 55px rgba(164, 98, 130, 0.13);
+      font-size: 8rem;
+    }
+
+    .floating {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-size: 2rem;
+    }
+
+    .floating.one {
+      left: 20px;
+      top: 15px;
+      transform: rotate(-10deg);
+    }
+
+    .floating.two {
+      right: 15px;
+      bottom: 10px;
+      transform: rotate(10deg);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 75px;
+    }
+
+    .benefit {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .benefit-icon {
+      width: 45px;
+      height: 45px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--soft-pink);
+      font-size: 1.25rem;
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .benefit small {
+      color: var(--muted);
+    }
+
+    .shop-section {
+      padding: 10px 0 90px;
+    }
+
+    .section-heading {
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(230px, 1fr) auto auto;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .toolbar select {
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0 13px;
+      color: var(--text);
+      background: white;
+      outline: none;
+    }
+
+    .price-filter {
+      min-width: 200px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .price-filter label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .price-filter input {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .category-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 15px;
+      color: var(--muted);
+      background: white;
+    }
+
+    .category-button:hover,
+    .category-button.active {
+      color: white;
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    .result-info {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-visual {
+      height: 225px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #fff1f5, #f7efff);
+      font-size: 5rem;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      color: var(--primary-dark);
+      background: white;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .favorite-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .favorite-button.active {
+      color: white;
+      background: var(--primary);
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-category {
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .product-title {
+      min-height: 48px;
+      font-size: 1rem;
+      margin: 4px 0 7px;
+    }
+
+    .rating {
+      color: #e8a43b;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+    }
+
+    .rating span {
+      color: var(--muted);
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price strong {
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+    }
+
+    .old-price {
+      display: block;
+      color: #b6a5ac;
+      font-size: 0.75rem;
+      text-decoration: line-through;
+    }
+
+    .add-button {
+      border: 0;
+      color: white;
+      background: var(--primary);
+      border-radius: 12px;
+      padding: 9px 13px;
+      font-weight: 600;
+    }
+
+    .quick-view-button {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 8px;
+      color: var(--muted);
+      background: white;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: white;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      visibility: hidden;
+      opacity: 0;
+      background: rgba(58, 38, 47, 0.35);
+      transition: 0.2s;
+    }
+
+    .overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      right: 0;
+      width: min(430px, 100%);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      transform: translateX(100%);
+      transition: 0.3s ease;
+      box-shadow: -15px 0 40px rgba(58, 38, 47, 0.12);
+    }
+
+    .cart-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .icon-button {
+      width: 39px;
+      height: 39px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--soft-pink);
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px 20px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-item-visual {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--soft-pink);
+      font-size: 2rem;
+    }
+
+    .cart-item h4 {
+      font-size: 0.88rem;
+      margin-bottom: 3px;
+    }
+
+    .cart-item-price {
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 7px;
+    }
+
+    .quantity button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: white;
+    }
+
+    .remove-button {
+      border: 0;
+      color: var(--danger);
+      background: transparent;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      background: var(--light-pink);
+    }
+
+    .coupon {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .coupon input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 9px 11px;
+      outline: 0;
+    }
+
+    .coupon button {
+      border: 0;
+      border-radius: 11px;
+      padding: 9px 13px;
+      color: var(--primary-dark);
+      background: var(--soft-pink);
+      font-weight: 600;
+    }
+
+    .coupon-message {
+      min-height: 20px;
+      margin-bottom: 8px;
+      color: var(--success);
+      font-size: 0.78rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .summary-row.total {
+      color: var(--text);
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    .checkout-button {
+      width: 100%;
+      margin-top: 14px;
+      border: 0;
+      border-radius: 13px;
+      padding: 12px;
+      color: white;
+      background: var(--primary);
+      font-weight: 600;
+    }
+
+    .checkout-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    dialog {
+      width: min(620px, calc(100% - 28px));
+      max-height: 90vh;
+      margin: auto;
+      overflow-y: auto;
+      border: 0;
+      border-radius: 24px;
+      padding: 0;
+      color: var(--text);
+      box-shadow: 0 25px 80px rgba(66, 39, 51, 0.25);
+    }
+
+    dialog::backdrop {
+      background: rgba(58, 38, 47, 0.45);
+      backdrop-filter: blur(3px);
+    }
+
+    .dialog-content {
+      padding: 25px;
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .quick-product {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .quick-visual {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #fff1f5, #f1e9ff);
+      font-size: 6rem;
+    }
+
+    .quick-product p {
+      color: var(--muted);
+      margin: 10px 0 16px;
+    }
+
+    .checkout-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--text);
+      background: white;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--soft-pink);
+    }
+
+    .order-summary {
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--light-pink);
+    }
+
+    .footer {
+      padding: 35px 0;
+      text-align: center;
+      color: var(--muted);
+      background: white;
+      border-top: 1px solid var(--border);
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 200;
+      left: 50%;
+      bottom: 25px;
+      max-width: calc(100% - 30px);
+      padding: 11px 18px;
+      color: white;
+      background: var(--text);
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 20px);
+      transition: 0.25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 950px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        display: none;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-box {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      .hero-box {
+        min-height: auto;
+        padding: 34px 25px;
+        border-radius: 25px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .search-box {
+        grid-column: auto;
+      }
+
+      .price-filter {
+        min-width: 0;
+      }
+
+      .product-visual {
+        height: 175px;
+        font-size: 4rem;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .quick-product {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-visual {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-text {
+        display: none;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-visual {
+        height: 220px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="กลับสู่หน้าหลัก">
+        <span class="brand-icon">🌸</span>
+        <span class="brand-text">Blush & Bloom</span>
+      </a>
+
+      <nav class="nav-links" aria-label="เมนูหลัก">
+        <a href="#home">หน้าแรก</a>
+        <a href="#products">สินค้า</a>
+        <a href="#benefits">บริการของเรา</a>
+      </nav>
+
+      <button class="cart-button" id="openCart" type="button">
+        🛍️ ตะกร้า
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-box">
+        <div class="hero-copy">
+          <span class="eyebrow">✨ สวยในแบบที่เป็นคุณ</span>
+          <h1>เติมสีสันให้ทุกวัน <span>สดใสกว่าเดิม</span></h1>
+          <p>
+            คัดสรรเครื่องสำอางคุณภาพดี ใช้ง่าย เหมาะกับทุกสไตล์
+            พร้อมบริการจัดส่งทั่วประเทศ
+          </p>
+          <a href="#products">
+            <button class="primary-button" type="button">เลือกซื้อสินค้า</button>
+          </a>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-circle">💄</div>
+          <div class="floating one">🌷</div>
+          <div class="floating two">✨</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container benefits" id="benefits">
+      <article class="benefit">
+        <div class="benefit-icon">🚚</div>
+        <div>
+          <strong>ส่งฟรีเมื่อครบ 999 บาท</strong>
+          <small>จัดส่งทั่วประเทศไทย</small>
+        </div>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-icon">🌿</div>
+        <div>
+          <strong>ผลิตภัณฑ์คุณภาพดี</strong>
+          <small>คัดสรรอย่างใส่ใจ</small>
+        </div>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-icon">💗</div>
+        <div>
+          <strong>เลือกซื้อง่าย</strong>
+          <small>ค้นหาและกรองสินค้าได้ทันที</small>
+        </div>
+      </article>
+    </section>
+
+    <section class="shop-section" id="products">
+      <div class="container">
+        <div class="section-heading">
+          <h2>เลือกไอเทมที่ใช่สำหรับคุณ</h2>
+          <p>ค้นหาและเลือกซื้อเครื่องสำอางได้ง่าย ไม่ซับซ้อน</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box">
+            🔍
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="ค้นหาชื่อสินค้า..."
+              aria-label="ค้นหาสินค้า"
+            >
+          </label>
+
+          <select id="sortSelect" aria-label="เรียงลำดับสินค้า">
+            <option value="popular">ยอดนิยม</option>
+            <option value="price-low">ราคาต่ำไปสูง</option>
+            <option value="price-high">ราคาสูงไปต่ำ</option>
+            <option value="rating">คะแนนสูงสุด</option>
+          </select>
+
+          <div class="price-filter">
+            <label for="priceRange">
+              <span>ราคาสูงสุด</span>
+              <strong id="priceLabel">฿2,500</strong>
+            </label>
+            <input id="priceRange" type="range" min="100" max="2500" value="2500" step="100">
+          </div>
+        </div>
+
+        <div class="categories" id="categoryButtons">
+          <button class="category-button active" data-category="ทั้งหมด">ทั้งหมด</button>
+          <button class="category-button" data-category="ลิป">ลิป</button>
+          <button class="category-button" data-category="ผิวหน้า">ผิวหน้า</button>
+          <button class="category-button" data-category="ดวงตา">ดวงตา</button>
+          <button class="category-button" data-category="บำรุงผิว">บำรุงผิว</button>
+          <button class="category-button" data-category="น้ำหอม">น้ำหอม</button>
+        </div>
+
+        <p class="result-info" id="resultInfo"></p>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="ตะกร้าสินค้า">
+    <div class="drawer-header">
+      <h2>ตะกร้าของคุณ</h2>
+      <button class="icon-button" id="closeCart" type="button" aria-label="ปิดตะกร้า">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+      <div class="coupon">
+        <input id="couponInput" placeholder="โค้ดส่วนลด: PINK10">
+        <button id="applyCoupon" type="button">ใช้โค้ด</button>
+      </div>
+
+      <p class="coupon-message" id="couponMessage"></p>
+
+      <div class="summary-row">
+        <span>ยอดสินค้า</span>
+        <span id="subtotal">฿0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>ส่วนลด</span>
+        <span id="discount">-฿0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>ค่าจัดส่ง</span>
+        <span id="shipping">฿0</span>
+      </div>
+
+      <div class="summary-row total">
+        <span>ยอดรวม</span>
+        <span id="grandTotal">฿0</span>
+      </div>
+
+      <button class="checkout-button" id="checkoutButton" type="button">
+        ดำเนินการสั่งซื้อ
+      </button>
+    </div>
+  </aside>
+
+  <dialog id="quickViewDialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2>รายละเอียดสินค้า</h2>
+        <button class="icon-button" data-close-dialog="quickViewDialog" type="button">✕</button>
+      </div>
+      <div id="quickViewContent"></div>
+    </div>
+  </dialog>
+
+  <dialog id="checkoutDialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2>ข้อมูลจัดส่ง</h2>
+        <button class="icon-button" data-close-dialog="checkoutDialog" type="button">✕</button>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="customerName">ชื่อ-นามสกุล</label>
+            <input id="customerName" name="customerName" required minlength="3">
+          </div>
+
+          <div class="field">
+            <label for="phone">เบอร์โทรศัพท์</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              pattern="[0-9]{9,10}"
+              placeholder="0812345678"
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="address">ที่อยู่จัดส่ง</label>
+          <textarea id="address" name="address" required minlength="10"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="payment">วิธีชำระเงิน</label>
+          <select id="payment" name="payment" required>
+            <option value="">กรุณาเลือก</option>
+            <option value="cod">เก็บเงินปลายทาง</option>
+            <option value="transfer">โอนผ่านธนาคาร</option>
+            <option value="promptpay">พร้อมเพย์</option>
+          </select>
+        </div>
+
+        <div class="order-summary" id="checkoutSummary"></div>
+
+        <button class="primary-button" type="submit">ยืนยันคำสั่งซื้อ</button>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🌸 Blush & Bloom — เครื่องสำอางที่ช่วยเติมความมั่นใจให้ทุกวัน</p>
+      <small>เว็บไซต์ตัวอย่างสำหรับการศึกษา ไม่มีการชำระเงินจริง</small>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const products = [
+      {
+        id: 1,
+        name: "Velvet Bloom Lip Tint",
+        category: "ลิป",
+        price: 590,
+        oldPrice: 690,
+        rating: 4.9,
+        popularity: 98,
+        emoji: "💄",
+        badge: "ขายดี",
+        description: "ลิปทินต์เนื้อกำมะหยี่ สีชัด ติดทนนาน แต่ยังคงความบางเบาสบายริมฝีปาก"
+      },
+      {
+        id: 2,
+        name: "Glass Shine Lip Gloss",
+        category: "ลิป",
+        price: 450,
+        oldPrice: 0,
+        rating: 4.7,
+        popularity: 87,
+        emoji: "🫧",
+        badge: "ใหม่",
+        description: "ลิปกลอสเนื้อบางเบา ช่วยให้ริมฝีปากดูฉ่ำวาวโดยไม่เหนียวเหนอะหนะ"
+      },
+      {
+        id: 3,
+        name: "Soft Cloud Cushion",
+        category: "ผิวหน้า",
+        price: 890,
+        oldPrice: 990,
+        rating: 4.8,
+        popularity: 96,
+        emoji: "🪞",
+        badge: "ยอดนิยม",
+        description: "คุชชั่นปกปิดอย่างเป็นธรรมชาติ ให้ผิวดูเรียบเนียนและสดใสตลอดวัน"
+      },
+      {
+        id: 4,
+        name: "Petal Blush Palette",
+        category: "ผิวหน้า",
+        price: 650,
+        oldPrice: 750,
+        rating: 4.8,
+        popularity: 91,
+        emoji: "🌸",
+        badge: "แนะนำ",
+        description: "พาเลตต์บลัชโทนละมุน เกลี่ยง่าย ให้พวงแก้มดูสดใสอย่างเป็นธรรมชาติ"
+      },
+      {
+        id: 5,
+        name: "Moonlight Eye Palette",
+        category: "ดวงตา",
+        price: 790,
+        oldPrice: 890,
+        rating: 4.9,
+        popularity: 95,
+        emoji: "🌙",
+        badge: "ขายดี",
+        description: "อายแชโดว์โทนชมพูและน้ำตาล ใช้ได้ทั้งลุคประจำวันและลุคออกงาน"
+      },
+      {
+        id: 6,
+        name: "Perfect Line Eyeliner",
+        category: "ดวงตา",
+        price: 390,
+        oldPrice: 0,
+        rating: 4.6,
+        popularity: 82,
+        emoji: "🖊️",
+        badge: "",
+        description: "อายไลเนอร์หัวเล็ก เขียนง่าย เส้นคมชัด กันน้ำและไม่เลอะระหว่างวัน"
+      },
+      {
+        id: 7,
+        name: "Lash Love Mascara",
+        category: "ดวงตา",
+        price: 490,
+        oldPrice: 550,
+        rating: 4.7,
+        popularity: 88,
+        emoji: "👁️",
+        badge: "",
+        description: "มาสคาร่าช่วยให้ขนตาดูยาวและเรียงตัวสวย พร้อมสูตรกันน้ำ"
+      },
+      {
+        id: 8,
+        name: "Rose Dew Serum",
+        category: "บำรุงผิว",
+        price: 990,
+        oldPrice: 1190,
+        rating: 4.9,
+        popularity: 97,
+        emoji: "🌹",
+        badge: "ขายดี",
+        description: "เซรั่มบำรุงผิวเนื้อบางเบา ช่วยเติมความชุ่มชื้นและให้ผิวดูเปล่งปลั่ง"
+      },
+      {
+        id: 9,
+        name: "Gentle Milk Cleanser",
+        category: "บำรุงผิว",
+        price: 550,
+        oldPrice: 0,
+        rating: 4.7,
+        popularity: 85,
+        emoji: "🥛",
+        badge: "อ่อนโยน",
+        description: "ผลิตภัณฑ์ทำความสะอาดผิวสูตรอ่อนโยน ช่วยล้างสิ่งสกปรกโดยไม่ทำให้ผิวแห้ง"
+      },
+      {
+        id: 10,
+        name: "Daily Glow Sunscreen",
+        category: "บำรุงผิว",
+        price: 690,
+        oldPrice: 790,
+        rating: 4.8,
+        popularity: 94,
+        emoji: "☀️",
+        badge: "แนะนำ",
+        description: "ครีมกันแดดเนื้อบางเบา ไม่เหนอะหนะ เหมาะสำหรับใช้ก่อนแต่งหน้า"
+      },
+      {
+        id: 11,
+        name: "Sweet Peony Perfume",
+        category: "น้ำหอม",
+        price: 1290,
+        oldPrice: 1490,
+        rating: 4.8,
+        popularity: 90,
+        emoji: "🌷",
+        badge: "ใหม่",
+        description: "น้ำหอมกลิ่นดอกโบตั๋น หอมหวานอย่างพอดี ให้ความรู้สึกอ่อนโยนและสดใส"
+      },
+      {
+        id: 12,
+        name: "Pink Dream Eau de Parfum",
+        category: "น้ำหอม",
+        price: 1590,
+        oldPrice: 1790,
+        rating: 4.9,
+        popularity: 93,
+        emoji: "🎀",
+        badge: "พิเศษ",
+        description: "กลิ่นหอมละมุนที่ผสมผสานดอกไม้และวานิลลา เหมาะสำหรับทุกโอกาส"
+      }
+    ];
+
+    const state = {
+      category: "ทั้งหมด",
+      search: "",
+      sort: "popular",
+      maxPrice: 2500,
+      coupon: "",
+      cart: loadJSON("blush-bloom-cart", []),
+      favorites: loadJSON("blush-bloom-favorites", [])
+    };
+
+    const elements = {
+      productGrid: document.getElementById("productGrid"),
+      resultInfo: document.getElementById("resultInfo"),
+      searchInput: document.getElementById("searchInput"),
+      sortSelect: document.getElementById("sortSelect"),
+      priceRange: document.getElementById("priceRange"),
+      priceLabel: document.getElementById("priceLabel"),
+      categoryButtons: document.getElementById("categoryButtons"),
+      cartDrawer: document.getElementById("cartDrawer"),
+      overlay: document.getElementById("overlay"),
+      openCart: document.getElementById("openCart"),
+      closeCart: document.getElementById("closeCart"),
+      cartCount: document.getElementById("cartCount"),
+      cartItems: document.getElementById("cartItems"),
+      couponInput: document.getElementById("couponInput"),
+      couponMessage: document.getElementById("couponMessage"),
+      subtotal: document.getElementById("subtotal"),
+      discount: document.getElementById("discount"),
+      shipping: document.getElementById("shipping"),
+      grandTotal: document.getElementById("grandTotal"),
+      checkoutButton: document.getElementById("checkoutButton"),
+      quickViewDialog: document.getElementById("quickViewDialog"),
+      quickViewContent: document.getElementById("quickViewContent"),
+      checkoutDialog: document.getElementById("checkoutDialog"),
+      checkoutForm: document.getElementById("checkoutForm"),
+      checkoutSummary: document.getElementById("checkoutSummary"),
+      toast: document.getElementById("toast")
+    };
+
+    function loadJSON(key, fallback) {
+      try {
+        const value = JSON.parse(localStorage.getItem(key));
+        return Array.isArray(value) ? value : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem("blush-bloom-cart", JSON.stringify(state.cart));
+      localStorage.setItem("blush-bloom-favorites", JSON.stringify(state.favorites));
+    }
+
+    function formatPrice(value) {
+      return new Intl.NumberFormat("th-TH", {
+        style: "currency",
+        currency: "THB",
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function getFilteredProducts() {
+      const keyword = state.search.trim().toLowerCase();
+
+      const result = products.filter(product => {
+        const matchesCategory =
+          state.category === "ทั้งหมด" || product.category === state.category;
+
+        const matchesSearch =
+          product.name.toLowerCase().includes(keyword) ||
+          product.category.toLowerCase().includes(keyword);
+
+        const matchesPrice = product.price <= state.maxPrice;
+
+        return matchesCategory && matchesSearch && matchesPrice;
+      });
+
+      return result.sort((a, b) => {
+        if (state.sort === "price-low") return a.price - b.price;
+        if (state.sort === "price-high") return b.price - a.price;
+        if (state.sort === "rating") return b.rating - a.rating;
+        return b.popularity - a.popularity;
+      });
+    }
+
+    function renderProducts() {
+      const filtered = getFilteredProducts();
+
+      elements.resultInfo.textContent = `พบสินค้า ${filtered.length} รายการ`;
+
+      if (!filtered.length) {
+        elements.productGrid.innerHTML = `
+          <div class="empty-state">
+            <div style="font-size:3rem">🌷</div>
+            <h3>ไม่พบสินค้าที่ค้นหา</h3>
+            <p>ลองเปลี่ยนคำค้นหา หมวดหมู่ หรือช่วงราคา</p>
+          </div>
+        `;
+        return;
+      }
+
+      elements.productGrid.innerHTML = filtered.map(product => {
+        const favorite = state.favorites.includes(product.id);
+
+        return `
+          <article class="product-card">
+            <div class="product-visual">
+              ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ""}
+              <button
+                class="favorite-button ${favorite ? "active" : ""}"
+                data-favorite="${product.id}"
+                type="button"
+                aria-label="เพิ่มสินค้าโปรด"
+              >
+                ${favorite ? "♥" : "♡"}
+              </button>
+              <span aria-hidden="true">${product.emoji}</span>
+            </div>
+
+            <div class="product-info">
+              <span class="product-category">${product.category}</span>
+              <h3 class="product-title">${product.name}</h3>
+              <div class="rating">
+                ★ ${product.rating}
+                <span>คะแนนสินค้า</span>
+              </div>
+
+              <div class="product-price-row">
+                <div class="price">
+                  <strong>${formatPrice(product.price)}</strong>
+                  ${product.oldPrice
+                    ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>`
+                    : ""
+                  }
+                </div>
+
+                <button class="add-button" data-add="${product.id}" type="button">
+                  + ตะกร้า
+                </button>
+              </div>
+
+              <button class="quick-view-button" data-view="${product.id}" type="button">
+                ดูรายละเอียด
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function addToCart(productId) {
+      const item = state.cart.find(item => item.id === productId);
+
+      if (item) {
+        item.quantity += 1;
+      } else {
+        state.cart.push({ id: productId, quantity: 1 });
+      }
+
+      saveState();
+      renderCart();
+      showToast("เพิ่มสินค้าลงตะกร้าแล้ว 💗");
+    }
+
+    function updateQuantity(productId, change) {
+      const item = state.cart.find(item => item.id === productId);
+      if (!item) return;
+
+      item.quantity += change;
+
+      if (item.quantity <= 0) {
+        state.cart = state.cart.filter(item => item.id !== productId);
+      }
+
+      saveState();
+      renderCart();
+    }
+
+    function removeFromCart(productId) {
+      state.cart = state.cart.filter(item => item.id !== productId);
+      saveState();
+      renderCart();
+      showToast("นำสินค้าออกจากตะกร้าแล้ว");
+    }
+
+    function calculateSummary(cart, coupon) {
+      const subtotal = cart.reduce((sum, item) => {
+        const product = products.find(product => product.id === item.id);
+        const quantity = Math.max(0, Number(item.quantity) || 0);
+        return product ? sum + product.price * quantity : sum;
+      }, 0);
+
+      const discount =
+        coupon.trim().toUpperCase() === "PINK10"
+          ? Math.round(subtotal * 0.1)
+          : 0;
+
+      const shipping = subtotal === 0 || subtotal >= 999 ? 0 : 60;
+      const total = Math.max(0, subtotal - discount + shipping);
+
+      return { subtotal, discount, shipping, total };
+    }
+
+    function renderCart() {
+      const validCart = state.cart.filter(item =>
+        products.some(product => product.id === item.id)
+      );
+
+      state.cart = validCart;
+
+      const totalItems = state.cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+
+      elements.cartCount.textContent = totalItems;
+
+      if (!state.cart.length) {
+        elements.cartItems.innerHTML = `
+          <div class="empty-state">
+            <div style="font-size:3rem">🛍️</div>
+            <h3>ตะกร้ายังว่างอยู่</h3>
+            <p>เลือกสินค้าที่ชอบแล้วกลับมาที่นี่ได้เลย</p>
+          </div>
+        `;
+      } else {
+        elements.cartItems.innerHTML = state.cart.map(item => {
+          const product = products.find(product => product.id === item.id);
+
+          return `
+            <article class="cart-item">
+              <div class="cart-item-visual">${product.emoji}</div>
+
+              <div>
+                <h4>${product.name}</h4>
+                <div class="cart-item-price">${formatPrice(product.price)}</div>
+
+                <div class="quantity">
+                  <button data-decrease="${product.id}" type="button">−</button>
+                  <span>${item.quantity}</span>
+                  <button data-increase="${product.id}" type="button">+</button>
+                </div>
+              </div>
+
+              <button
+                class="remove-button"
+                data-remove="${product.id}"
+                type="button"
+                aria-label="ลบสินค้า"
+              >
+                ✕
+              </button>
+            </article>
+          `;
+        }).join("");
+      }
+
+      const summary = calculateSummary(state.cart, state.coupon);
+
+      elements.subtotal.textContent = formatPrice(summary.subtotal);
+      elements.discount.textContent = `-${formatPrice(summary.discount)}`;
+      elements.shipping.textContent =
+        summary.shipping === 0 ? "ฟรี" : formatPrice(summary.shipping);
+      elements.grandTotal.textContent = formatPrice(summary.total);
+      elements.checkoutButton.disabled = state.cart.length === 0;
+
+      saveState();
+    }
+
+    function toggleFavorite(productId) {
+      const index = state.favorites.indexOf(productId);
+
+      if (index >= 0) {
+        state.favorites.splice(index, 1);
+        showToast("นำออกจากรายการโปรดแล้ว");
+      } else {
+        state.favorites.push(productId);
+        showToast("เพิ่มในรายการโปรดแล้ว 💕");
+      }
+
+      saveState();
+      renderProducts();
+    }
+
+    function showQuickView(productId) {
+      const product = products.find(product => product.id === productId);
+      if (!product) return;
+
+      elements.quickViewContent.innerHTML = `
+        <div class="quick-product">
+          <div class="quick-visual">${product.emoji}</div>
+
+          <div>
+            <span class="product-category">${product.category}</span>
+            <h2>${product.name}</h2>
+            <div class="rating">★ ${product.rating}</div>
+            <p>${product.description}</p>
+            <h3>${formatPrice(product.price)}</h3>
+
+            <button
+              class="primary-button"
+              id="quickAddButton"
+              type="button"
+              style="margin-top:14px"
+            >
+              เพิ่มลงตะกร้า
+            </button>
+          </div>
+        </div>
+      `;
+
+      elements.quickViewDialog.showModal();
+
+      document.getElementById("quickAddButton").addEventListener("click", () => {
+        addToCart(productId);
+        elements.quickViewDialog.close();
+        openCart();
+      });
+    }
+
+    function openCart() {
+      elements.cartDrawer.classList.add("active");
+      elements.overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCart() {
+      elements.cartDrawer.classList.remove("active");
+      elements.overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function showToast(message) {
+      elements.toast.textContent = message;
+      elements.toast.classList.add("show");
+
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => {
+        elements.toast.classList.remove("show");
+      }, 2200);
+    }
+
+    elements.productGrid.addEventListener("click", event => {
+      const addButton = event.target.closest("[data-add]");
+      const favoriteButton = event.target.closest("[data-favorite]");
+      const viewButton = event.target.closest("[data-view]");
+
+      if (addButton) addToCart(Number(addButton.dataset.add));
+      if (favoriteButton) toggleFavorite(Number(favoriteButton.dataset.favorite));
+      if (viewButton) showQuickView(Number(viewButton.dataset.view));
+    });
+
+    elements.cartItems.addEventListener("click", event => {
+      const increase = event.target.closest("[data-increase]");
+      const decrease = event.target.closest("[data-decrease]");
+      const remove = event.target.closest("[data-remove]");
+
+      if (increase) updateQuantity(Number(increase.dataset.increase), 1);
+      if (decrease) updateQuantity(Number(decrease.dataset.decrease), -1);
+      if (remove) removeFromCart(Number(remove.dataset.remove));
+    });
+
+    elements.categoryButtons.addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+
+      document.querySelectorAll(".category-button").forEach(item => {
+        item.classList.remove("active");
+      });
+
+      button.classList.add("active");
+      state.category = button.dataset.category;
+      renderProducts();
+    });
+
+    elements.searchInput.addEventListener("input", event => {
+      state.search = event.target.value;
+      renderProducts();
+    });
+
+    elements.sortSelect.addEventListener("change", event => {
+      state.sort = event.target.value;
+      renderProducts();
+    });
+
+    elements.priceRange.addEventListener("input", event => {
+      state.maxPrice = Number(event.target.value);
+      elements.priceLabel.textContent = formatPrice(state.maxPrice);
+      renderProducts();
+    });
+
+    document.getElementById("applyCoupon").addEventListener("click", () => {
+      const code = elements.couponInput.value.trim().toUpperCase();
+
+      if (code === "PINK10") {
+        state.coupon = code;
+        elements.couponMessage.textContent = "ใช้ส่วนลด 10% สำเร็จแล้ว";
+        renderCart();
+      } else {
+        state.coupon = "";
+        elements.couponMessage.textContent = "โค้ดส่วนลดไม่ถูกต้อง";
+        elements.couponMessage.style.color = "var(--danger)";
+        renderCart();
+
+        setTimeout(() => {
+          elements.couponMessage.style.color = "var(--success)";
+        }, 1000);
+      }
+    });
+
+    elements.openCart.addEventListener("click", openCart);
+    elements.closeCart.addEventListener("click", closeCart);
+    elements.overlay.addEventListener("click", closeCart);
+
+    elements.checkoutButton.addEventListener("click", () => {
+      const summary = calculateSummary(state.cart, state.coupon);
+
+      elements.checkoutSummary.innerHTML = `
+        <div class="summary-row">
+          <span>จำนวนสินค้า</span>
+          <strong>${state.cart.reduce((sum, item) => sum + item.quantity, 0)} ชิ้น</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>ส่วนลด</span>
+          <strong>-${formatPrice(summary.discount)}</strong>
+        </div>
+
+        <div class="summary-row total">
+          <span>ยอดชำระทั้งหมด</span>
+          <strong>${formatPrice(summary.total)}</strong>
+        </div>
+      `;
+
+      closeCart();
+      elements.checkoutDialog.showModal();
+    });
+
+    elements.checkoutForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!elements.checkoutForm.checkValidity()) {
+        elements.checkoutForm.reportValidity();
+        return;
+      }
+
+      const orderId = `BB${Date.now().toString().slice(-8)}`;
+
+      state.cart = [];
+      state.coupon = "";
+      elements.couponInput.value = "";
+      elements.couponMessage.textContent = "";
+
+      saveState();
+      renderCart();
+      elements.checkoutForm.reset();
+      elements.checkoutDialog.close();
+
+      showToast(`สั่งซื้อสำเร็จ เลขที่ ${orderId} 🎉`);
+    });
+
+    document.querySelectorAll("[data-close-dialog]").forEach(button => {
+      button.addEventListener("click", () => {
+        const dialog = document.getElementById(button.dataset.closeDialog);
+        dialog.close();
+      });
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeCart();
+    });
+
+    function runTests() {
+      const normal = calculateSummary([{ id: 1, quantity: 1 }], "");
+      console.assert(normal.subtotal === 590, "ทดสอบยอดสินค้าไม่ผ่าน");
+      console.assert(normal.shipping === 60, "ทดสอบค่าจัดส่งไม่ผ่าน");
+      console.assert(normal.total === 650, "ทดสอบยอดรวมไม่ผ่าน");
+
+      const freeShipping = calculateSummary([{ id: 1, quantity: 2 }], "");
+      console.assert(freeShipping.subtotal === 1180, "ทดสอบยอดหลายชิ้นไม่ผ่าน");
+      console.assert(freeShipping.shipping === 0, "ทดสอบส่งฟรีไม่ผ่าน");
+
+      const coupon = calculateSummary([{ id: 1, quantity: 2 }], "PINK10");
+      console.assert(coupon.discount === 118, "ทดสอบส่วนลดไม่ผ่าน");
+      console.assert(coupon.total === 1062, "ทดสอบยอดหลังหักส่วนลดไม่ผ่าน");
+
+      const invalidProduct = calculateSummary([{ id: 999, quantity: 1 }], "");
+      console.assert(invalidProduct.total === 0, "ทดสอบสินค้าที่ไม่มีอยู่ไม่ผ่าน");
+
+      console.log("✅ Blush & Bloom: ชุดทดสอบพื้นฐานทำงานครบ");
+    }
+
+    renderProducts();
+    renderCart();
+    runTests();
+  </script>
+</body>
+</html>
